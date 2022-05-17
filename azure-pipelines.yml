@@ -6,6 +6,17 @@ trigger:
 - master
 
 resources:
+- task: Kubernetes@1
+  inputs:
+    connectionType: 'Azure Resource Manager'
+    azureSubscriptionEndpoint: 'Pay-As-You-Go(85d7d9a0-80a0-4b77-8076-b138fe735061)'
+    azureResourceGroup: 'myapp-rg'
+    kubernetesCluster: 'myapp'
+    namespace: 'Default'
+    command: 'apply'
+    secretType: 'dockerRegistry'
+    containerRegistryType: 'Container Registry'
+    forceUpdate: false
 - repo: self
 
 variables:
